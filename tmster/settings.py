@@ -22,7 +22,7 @@ ADMINS = (
     ('Juan Carlos Cayetano', 'jc@brainn.co'),
 )
 
-AUTH_PROFILE_MODELS = 'engine.Profile'
+AUTH_PROFILE_MODULE = 'engine.Profile'
 
 MANAGERS = ADMINS
 

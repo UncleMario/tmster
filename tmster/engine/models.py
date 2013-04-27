@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -20,10 +23,10 @@ VARIANT_CHOICES = (
 	)
 
 class Student(models.Model):
-	name = models.CharField(max_lenght=40)
-	school = models.CharField(max_lenght=2, choices=SCHOOL_CHOICES)
-	facebook = models.CharField(max_lenght=50, blank=True, null=True)
-	twitter = models.CharField(max_lenght=20, blank=True, null=True)
+	name = models.CharField(max_length=40)
+	school = models.CharField(max_length=2, choices=SCHOOL_CHOICES)
+	facebook = models.CharField(max_length=50, blank=True, null=True)
+	twitter = models.CharField(max_length=20, blank=True, null=True)
 
 	def __unicode__(self):
 		return u'%s' % (self.name)
@@ -45,7 +48,7 @@ class Profile(FacebookProfileModel):
 	post_save.connect(create_user_profile, sender=User)
 
 class Opinion(models.Model):
-	variant = models.CharField(max_lenght=2, choices=VARIANT_CHOICES)
+	variant = models.CharField(max_length=2, choices=VARIANT_CHOICES)
 	value = models.BooleanField()
 
 	def __unicode__(self):
@@ -53,7 +56,7 @@ class Opinion(models.Model):
 
 
 class Comment(models.Model):
-	text = models.CharField(max_lenght=300)
+	text = models.CharField(max_length=300)
 
 	def __unicode__(self):
 		return u'%s' % (self.text)
