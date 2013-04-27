@@ -2,6 +2,17 @@
 import os, sys
 import dj_database_url
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django_facebook.context_processors.facebook',
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+) 
+
 gettext_noop = lambda s: s
 
 DEBUG = True
@@ -10,6 +21,8 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     ('Juan Carlos Cayetano', 'jc@brainn.co'),
 )
+
+AUTH_PROFILE_MODELS = 'engine.Profile'
 
 MANAGERS = ADMINS
 
@@ -92,6 +105,11 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'django_facebook.auth_backends.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 ROOT_URLCONF = 'tmster.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -146,3 +164,7 @@ LOGGING = {
 }
 
 LOGIN_REDIRECT_URL = '/'
+
+#Facebook Settings
+FACEBOOK_APP_ID = '149622848553785'
+FACEBOOK_APP_SECRET = '96ee91562c0eb29d2c0a164c0d474df2'

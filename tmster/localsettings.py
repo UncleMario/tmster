@@ -8,8 +8,8 @@ DATABASES = {'default':
         }
 
 #CuantoDev Facebook Settings
-FACEBOOK_APP_ID = ''
-FACEBOOK_APP_SECRET = '' 
+FACEBOOK_APP_ID = '634973113184057'
+FACEBOOK_APP_SECRET = 'ee8185caad629f4d6e92cf83cb942d1e' 
 
 
 
