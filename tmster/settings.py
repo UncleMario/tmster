@@ -107,6 +107,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'tmster.engine',
+
+    'django_facebook',
+
     'gunicorn',
 
 
