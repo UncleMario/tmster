@@ -49,7 +49,7 @@ class Profile(FacebookProfileModel):
 
 class Opinion(models.Model):
 	variant = models.CharField(max_length=2, choices=VARIANT_CHOICES)
-	value = models.BooleanField()
+	value = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return u'%s' % (self.value)
@@ -62,10 +62,10 @@ class Comment(models.Model):
 		return u'%s' % (self.text)
 
 class Survey(models.Model):
-	user = models.ForeignKey(User)
-	student = models.ForeignKey(Student)
+	user = models.ForeignKey(User)#from
+	student = models.ForeignKey(Student)#to
 	comment = models.ForeignKey(Comment)
-	opinion = models.ManyToManyField(Opinion)
+	opinions = models.ManyToManyField(Opinion)
 
 	def __unicode__(self):
 		return u'%s' % (self.user)
