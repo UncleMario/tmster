@@ -14,10 +14,9 @@ def search(request):
 	q = q.strip()
 	if q != '':
 		results = Student.objects.filter(name__icontains= q)
-	else:
-		results = []
+		total = results.count()
 	return render_to_response('results.html', 
-		{'results':results}, context_instance=RequestContext(request))
+		{'results':results, 'total':total, 'student' : q}, context_instance=RequestContext(request))
 
 
 def view_student(request, studentID):

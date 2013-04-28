@@ -11,11 +11,12 @@
 </script>
 {% include 'django_facebook/_facebook_js.html' %}
 		<div class="home-search" style="margin-top:5em">
-			<img src="{{ MEDIA_URL }}img/logo.png" />
+			<img src="{{ MEDIA_URL }}img/logo_brillo.png" />
 			<h1 class="home-title">
 				<span class="highlight">Entérate de como trabajan tus compañeros de clase.</span><br/><br/>
 
 
+				{% if not user.is_authenticated %}
 				<form action="{% url facebook_connect %}?facebook_login=1" method="post">
 				<a href="javascript:void(0);" class="blue button" style="font-size: 0.8em;padding: 0.5em 0.75em;border-radius: 0.25em;" onclick="F.connect(this.parentNode);">
 					<span style="font-size:1.25em;padding-left:0.5em;padding-right:0.75em">f</span>Iniciar sesión
@@ -23,11 +24,62 @@
 				<input type="hidden" value="{{ request.path }}" name="next" />
 				{% csrf_token %} 
 				</form>
+				{% endif %}
+
+
 			</h1>
 			<form action="search" class="search-form group">
 				<input id="srch" type="text" class="search-input" placeholder="¿A quién buscas?" name="q" />
 				<input class="search-submit button" type="submit" value="Buscar" />
 			</form>
+		</div>
+		<style>
+			.description-1 {
+				background: rgba(0, 0, 0, 0.5);
+				border-radius: 0.5em;
+				margin-bottom: 1em;
+				padding: 1em;
+				text-align: left;
+			}
+
+			.description h1 {
+				font-size: 1.5em;
+			}
+
+			.description-1 img {
+				height: 200px;
+			}
+
+			img.float-left {
+				margin-right: 1em;
+			}
+
+			img.float-right {
+				margin-left: 1em;
+			}
+		</style>
+		<div class="description" style="margin-top:2em; font-size: 1.5em">
+			<div class="description-1 group" style="text-align: center">
+				<h1>¿Tmster? ¿Qué es eso? ¿Cómo se pronuncia?</h1>
+				<strong>Tmster</strong> es la manera más fácil de opinar e informarte sobre el desempeño académico de tus compañeros de clase.
+			</div>
+			<div class="description-1 group">
+				<img src="{{ MEDIA_URL }}img/Iconos-02.png" class="float-right" />
+				<h1>El Bueno</h1>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+
+			</div>
+			<div class="description-1 group">
+				<img src="{{ MEDIA_URL }}img/Iconos-03.png" class="float-left" />
+				<h1>El malo</h1>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			</div>
+			<div class="description-1 group">
+				<img src="{{ MEDIA_URL }}img/Iconos-04.png" class="float-right" />
+				<h1>Elige con confianza</h1>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			</div>
 		</div>
 {% endblock %}
 

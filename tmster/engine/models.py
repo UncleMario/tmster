@@ -9,10 +9,10 @@ from django_facebook.models import FacebookProfileModel
 from django_facebook import signals
 
 SCHOOL_CHOICES = (
-	('1','ITESM Campus Monterrey'),
-	('2','UDEM'),
-	('3','UANL'),
-	('4','UR'),
+	('ITESM Campus Monterrey','ITESM Campus Monterrey'),
+	('UDEM','UDEM'),
+	('UANL','UANL'),
+	('UR','UR'),
 	)
 
 VARIANT_CHOICES = (
@@ -25,7 +25,7 @@ VARIANT_CHOICES = (
 
 class Student(models.Model):
 	name = models.CharField(max_length=40)
-	school = models.CharField(max_length=2, blank=True, null=True, choices=SCHOOL_CHOICES)
+	school = models.CharField(max_length=20, blank=True, null=True, choices=SCHOOL_CHOICES)
 	carrer = models.CharField(max_length=50, blank=True, null=True)
 	facebook = models.CharField(max_length=50, blank=True, null=True)
 	twitter = models.CharField(max_length=20, blank=True, null=True)
