@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "header.html" %}
+
+		<div class="search-results">
+
+			<div class="search-results-information">
+				Se muestran <span class="attention">3</span> resultados para la busqueda <span class="attention">Fulanito</span>.
+			</div>
+
+			
+			<div class="results" style="background: rgba(0, 0, 0, 0.75);">
+				<!-- SEARCH RESULTS TITLE -->
+				<div class="search-result search-results-title group">
+					<div class="search-result-info float-left group">
+						<div class="search-result-info-name">Nombre</div>
+						<div class="search-result-info-school">Escuela</div>
+						<div class="search-result-info-career">Carrera</div>
+					</div>
+					<div class="search-result-rating">
+						Calificación promedio
+					</div>
+				</div>
+
+				<!-- SEARCH RESULTS -->
+
+				{% for result in results %}
+				<a href="{{ result.get_url }}">
+					<div class="search-result group">
+						<div class="search-result-info float-left group">
+							<div class="search-result-info-name">{{ result.name }}</div>
+							<div class="search-result-info-school">{{ result.school }}</div>
+							<div class="search-result-info-career">{{ result.carrer }}</div>
+						</div>
+						<div class="search-result-rating">
+							<div class="rating-bar">
+								<div class="rating-bar-width level-3">
+									&nbsp;
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
+				{% empty %}
+				<div class="search-no-results">
+					<h1 class="search-no-results-title">No se han encontrado alumnos, puedes agregar a un alumno <a href="#">aquí</a>.</h1>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+
+{% endblock %}

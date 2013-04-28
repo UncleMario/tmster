@@ -6,7 +6,7 @@
 		<div class="home-search" style="margin-top:5em">
 			<img src="{{ MEDIA_URL }}img/logo.png" />
 			<h1 class="home-title">
-				<span class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</span><br/><br/>
+				<span class="highlight">Entérate de como trabajan tus compañeros de clase.</span><br/><br/>
 
 
 				<form action="{% url facebook_connect %}?facebook_login=1" method="post">
@@ -16,11 +16,9 @@
 				<input type="hidden" value="{{ request.path }}" name="next" />
 				{% csrf_token %} 
 				</form>
-
-
 			</h1>
-			<form class="search-form group">
-				<input class="search-input" placeholder="¿A quién buscas?" />
+			<form action="search" class="search-form group">
+				<input type="text" class="search-input" placeholder="¿A quién buscas?" name="q" />
 				<input class="search-submit button" type="submit" value="Buscar" />
 			</form>
 		</div>

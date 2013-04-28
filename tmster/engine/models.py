@@ -25,12 +25,16 @@ VARIANT_CHOICES = (
 
 class Student(models.Model):
 	name = models.CharField(max_length=40)
-	school = models.CharField(max_length=2, choices=SCHOOL_CHOICES)
+	school = models.CharField(max_length=2, blank=True, null=True, choices=SCHOOL_CHOICES)
+	carrer = models.CharField(max_length=50, blank=True, null=True)
 	facebook = models.CharField(max_length=50, blank=True, null=True)
 	twitter = models.CharField(max_length=20, blank=True, null=True)
 
 	def __unicode__(self):
 		return u'%s' % (self.name)
+
+	def get_url(self):
+		return '/student/%s' % (self.pk)
 
 
 class Profile(FacebookProfileModel):
@@ -70,6 +74,7 @@ class Comment(models.Model):
 class Survey(models.Model):
 	user = models.ForeignKey(User)#from
 	student = models.ForeignKey(Student)#to
+	date = models.DateField(auto_now_add=True)
 	comment = models.ForeignKey(Comment)
 	opinions = models.ManyToManyField(Opinion)
 

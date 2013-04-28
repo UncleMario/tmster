@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "header.html" %}
+		<div class="student-header">
+			<div class="student-header-info">
+				<div class="student-header-info-name">{{ student.name }}</div>
+				<div class="student-header-info-school">{{ student.school }}</div>
+				<div class="student-header-info-career">{{ student.carrer }}</div>
+			</div>
+			<div class="search-result-rating">
+				<div class="rating-bar">
+					<div class="rating-bar-width level-1">
+						&nbsp;
+					</div>
+				</div>
+			</div>
+			<div class="text-align-right">
+				<input id="rate" class="button" type="button" value="Calificar" style="border-radius: 1em;margin-right:0.25em;padding:0.25em;width: 20%;display: inline-block;"/>
+			</div>
+		</div>
+
+		<form action="/survey/add/{{ student.pk }}/" method="post" enctype="multipart/form-data">{% csrf_token%}
+			<div class="rate" style="display:none">
+				<div class="opinion group">
+					<div class="opinion-left">Es puntual y eficiente para entregar trabajos</div>
+					<div class="center-option">
+						<input type="checkbox" id="id_opinion1" name="opinion1">
+					</div>
+					<div class="opinion-right">No es puntual y nos hace quedar mal en clase.</div>
+				</div>
+				<div class="opinion group">
+					<div class="opinion-left">Es puntual y eficiente para entregar trabajos</div>
+					<div class="center-option">
+						<input type="checkbox" id="id_opinion2" name="opinion2">
+					</div>
+					<div class="opinion-right">No es puntual y nos hace quedar mal en clase.</div>
+				</div>
+				<div class="opinion group">
+					<div class="opinion-left">Es puntual y eficiente para entregar trabajos</div>
+					<div class="center-option">
+						<input type="checkbox" id="id_opinion3" name="opinion3">
+					</div>
+					<div class="opinion-right">No es puntual y nos hace quedar mal en clase.</div>
+				</div>
+				<div class="opinion group">
+					<div class="opinion-left">Es puntual y eficiente para entregar trabajos</div>
+					<div class="center-option">
+						<input type="checkbox" id="id_opinion4" name="opinion4">
+					</div>
+					<div class="opinion-right">No es puntual y nos hace quedar mal en clase.</div>
+				</div>
+				<div class="opinion group">
+					<div class="opinion-left">Es puntual y eficiente para entregar trabajos</div>
+					<div class="center-option">
+						<input type="checkbox" id="id_opinion5" name="opinion5">
+					</div>
+					<div class="opinion-right">No es puntual y nos hace quedar mal en clase.</div>
+				</div>
+				<div class="opinion">
+					<textarea class="opinion-textarea" id="id_comment" name="comment" placeholder="Comentario final"></textarea>
+				</div>
+				<div class="rate-upload">
+					<input type="submit" class="rate-submit button" />
+				</div>
+			</div>
+		</form>
+
+		<h1 style="text-align: left; font-size: 1.5em">
+			Calificaciones
+		</h1>
+
+		<div class="rates-area">
+			{% for grade in grades %}
+			<div class="user-rate group">
+				<div class="date">
+					{{ grade.date }}
+				</div>
+				<div class="user-comment">
+					<div class="wrapping" style="padding:0 1em"><strong>&laquo;</strong>
+						{{ grade.comment.text }}
+					<strong>&raquo;</strong></div>
+				</div>
+				<div class="opinion-table">
+					<div class="triangle">
+						&#x25BC;
+					</div>
+					Puntualidad
+				</div>
+				<div class="opinion-table">
+					<div class="triangle">
+						&#x25B2;
+					</div>
+					Desempeño
+				</div>
+				<div class="opinion-table">
+					<div class="triangle">
+						&#x25B2;
+					</div>
+					Accesibilidad
+				</div>
+				<div class="opinion-table">
+					<div class="triangle">
+						&#x25B2;
+					</div>
+					Personalidad
+				</div>
+				<div class="opinion-table">
+					<div class="triangle">
+						&#x25B2;
+					</div>
+					Es recomendable?
+				</div>
+			</div>
+			{% empty %}
+			<h2>Aun no tiene calificaciones</h2>
+			{% endfor %}
+		</div>
+{% endblock %}
+
+{% block media_js %}
+		<script>
+			$(window).on('load', function () {
+				$('#rate').on('click', function () {
+					$('div.rate').slideDown(1000);
+
+					$(this).attr('disabled', 'disabled');
+				});
+			});
+		</script>
+{% endblock %}

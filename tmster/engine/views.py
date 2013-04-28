@@ -1,3 +1,5 @@
+import urllib
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -5,6 +7,23 @@ from django.contrib.auth.decorators import login_required
 
 from tmster.engine.forms import StudentForm, SurveyForm
 from tmster.engine.models import Survey, Opinion, Comment, Student
+
+def search(request):
+	q = urllib.unquote(request.GET.get('q',''))
+	q = q.strip()
+	if q != '':
+		results = Student.objects.filter(name__icontains= q)
+	else:
+		results = []
+	return render_to_response('results.html', 
+		{'results':results}, context_instance=RequestContext(request))
+
+
+def view_student(request, studentID):
+	student = get_object_or_404(Student, pk=studentID)
+	grades = Survey.objects.filter(student=student)
+	return render_to_response('view_student.html', 
+		{'student':student, 'grades':grades}, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def student(request):

@@ -5,6 +5,8 @@
 		<title>{% block title %}{% endblock %}</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/style.css" />
+		{% block media_css %}
+		{% endblock %}
 		<!--[if lt IE 8]>
 			<link rel="stylesheet" type="text/css" href="ie.css" />
 		<![endif]-->
@@ -12,6 +14,10 @@
 	<body class="text-shadow">
 		{% block content %}
 		{% endblock %}
+
 		{% include "footer.html" %}
+
+		{% block media_js %}
+		{% endblock %}
 	</body>
 </html>
