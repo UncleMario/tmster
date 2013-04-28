@@ -70,7 +70,7 @@
 		<h1 style="text-align: left; font-size: 1.5em">
 			Calificaciones
 		</h1>
-
+		<!--Puntualidad Desempeño Accesibilidad Personalidad Trabajarías de nuevo con el/ella?!-->
 		<div class="rates-area">
 			{% for grade in grades %}
 			<div class="user-rate group">
@@ -84,33 +84,54 @@
 				</div>
 				<div class="opinion-table">
 					<div class="triangle">
-						&#x25BC;
+						{% if grade.get_opinion1 %}
+						<img src="{{ MEDIA_URL }}img/checkmark.png" style="width:50%;" />
+						{% else %}
+						<img src="{{ MEDIA_URL }}img/cross.png" style="width:50%;" />
+						{% endif %}
 					</div>
+					
 					Puntualidad
 				</div>
 				<div class="opinion-table">
 					<div class="triangle">
-						&#x25B2;
+						{% if grade.get_opinion2 %}
+						<img src="{{ MEDIA_URL }}img/checkmark.png" style="width:50%;" />
+						{% else %}
+						<img src="{{ MEDIA_URL }}img/cross.png" style="width:50%;" />
+						{% endif %}
 					</div>
 					Desempeño
 				</div>
 				<div class="opinion-table">
 					<div class="triangle">
-						&#x25B2;
+						{% if grade.get_opinion3 %}
+						<img src="{{ MEDIA_URL }}img/checkmark.png" style="width:50%;" />
+						{% else %}
+						<img src="{{ MEDIA_URL }}img/cross.png" style="width:50%;" />
+						{% endif %}
 					</div>
 					Accesibilidad
 				</div>
 				<div class="opinion-table">
 					<div class="triangle">
-						&#x25B2;
+						{% if grade.get_opinion4 %}
+						<img src="{{ MEDIA_URL }}img/checkmark.png" style="width:50%;" />
+						{% else %}
+						<img src="{{ MEDIA_URL }}img/cross.png" style="width:50%;" />
+						{% endif %}
 					</div>
 					Personalidad
 				</div>
 				<div class="opinion-table">
 					<div class="triangle">
-						&#x25B2;
+						{% if grade.get_opinion5 %}
+						<img src="{{ MEDIA_URL }}img/checkmark.png" style="width:50%;" />
+						{% else %}
+						<img src="{{ MEDIA_URL }}img/cross.png" style="width:50%;" />
+						{% endif %}
 					</div>
-					Es recomendable?
+					Trabajarías de nuevo con el/ella?
 				</div>
 			</div>
 			{% empty %}

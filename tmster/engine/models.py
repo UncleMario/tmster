@@ -81,4 +81,17 @@ class Survey(models.Model):
 	def __unicode__(self):
 		return u'%s' % (self.user)
 
+	def get_opinion1(self):
+		return self.opinions.all()[0].value
 
+	def get_opinion2(self):
+		return self.opinions.all()[1].value
+
+	def get_opinion3(self):
+		return self.opinions.all()[2].value
+
+	def get_opinion4(self):
+		return self.opinions.all()[3].value
+
+	def get_opinion5(self):
+		return self.opinions.all()[4].value
