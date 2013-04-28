@@ -25,7 +25,7 @@ VARIANT_CHOICES = (
 
 class Student(models.Model):
 	name = models.CharField(max_length=40)
-	school = models.CharField(max_length=20, blank=True, null=True, choices=SCHOOL_CHOICES)
+	school = models.CharField(max_length=50, blank=True, null=True, choices=SCHOOL_CHOICES)
 	carrer = models.CharField(max_length=50, blank=True, null=True)
 	facebook = models.CharField(max_length=50, blank=True, null=True)
 	twitter = models.CharField(max_length=20, blank=True, null=True)
