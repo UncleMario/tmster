@@ -11,7 +11,11 @@ admin.autodiscover()
 urlpatterns = patterns('django.views.generic.simple',
 
 	url(r'^$', 'direct_to_template', {'template':'home.html'}),
+
+	url(r'^login/$', 'direct_to_template', {'template':'login.html'}),
 	url(r'^logout/$', logout, {'next_page' : '/'}),
+
+	url(r'^home/$', 'direct_to_template', {'template':'logued.html'}),
 
 	url(r'^facebook/', include('django_facebook.urls')),
 

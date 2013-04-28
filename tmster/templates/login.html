@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include 'django_facebook/_facebook_js.html' %}
+		<div class="home-search" style="margin-top:5em">
+			<img src="{{ MEDIA_URL }}img/Logo_Flat-03.png"/>
+			
+			<h1 class="home-title">
+				<span class="highlight">Empieza a opinar sobre tus compañeros ahora mismo.</span><br/><br/>
+				<form action="{% url facebook_connect %}?facebook_login=1" method="post">
+				<a href="javascript:void(0);" class="blue button" style="font-size: 0.8em;padding: 0.5em 0.75em;border-radius: 0.25em;" onclick="F.connect(this.parentNode);">
+					<span style="font-size:1.25em;padding-left:0.5em;padding-right:0.75em">f</span>Iniciar sesión
+				</a>
+				<input type="hidden" value="{{ request.path }}" name="next" />
+				{% csrf_token %} 
+				</form>
+			</h1>
+		</div>
+{% endblock %}
+

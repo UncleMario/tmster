@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script type="text/javascript">
+	$(function() {
+ 		$("#srch").autocomplete({
+			source: "/search/autocomplete/",
+			minLength: 2,
+		});
+	});
+</script>
+		<div class="home-search" style="margin-top:5em">
+			<img src="{{ MEDIA_URL }}img/Logo_Flat-03.png" />
+
+			<h1 class="home-title">
+				<span class="highlight">Escribe un nombre</span><br/><br/>
+			</h1>
+
+			<form action="/search" class="search-form group">
+				<input id="srch" type="text" class="search-input" placeholder="¿A quién buscas?" name="q" />
+				<input class="search-submit button" type="submit" value="Buscar" />
+			</form>
+			
+
+		</div>
+{% endblock %}
+

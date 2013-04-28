@@ -24,45 +24,40 @@
 		<form action="/survey/add/{{ student.pk }}/" method="post" enctype="multipart/form-data">{% csrf_token%}
 			<div class="rate" style="display:none">
 				<div class="opinion group">
-					<div class="opinion-left">Es puntual y eficiente para entregar trabajos</div>
+					<div class="opinion-left">Puntualidad</div>
 					<div class="center-option">
 						<input type="checkbox" id="id_opinion1" name="opinion1">
 					</div>
-					<div class="opinion-right">No es puntual y nos hace quedar mal en clase.</div>
 				</div>
 				<div class="opinion group">
-					<div class="opinion-left">Es puntual y eficiente para entregar trabajos</div>
+					<div class="opinion-left">Desempeño</div>
 					<div class="center-option">
 						<input type="checkbox" id="id_opinion2" name="opinion2">
 					</div>
-					<div class="opinion-right">No es puntual y nos hace quedar mal en clase.</div>
 				</div>
 				<div class="opinion group">
-					<div class="opinion-left">Es puntual y eficiente para entregar trabajos</div>
+					<div class="opinion-left">Accesibilidad</div>
 					<div class="center-option">
 						<input type="checkbox" id="id_opinion3" name="opinion3">
 					</div>
-					<div class="opinion-right">No es puntual y nos hace quedar mal en clase.</div>
 				</div>
 				<div class="opinion group">
-					<div class="opinion-left">Es puntual y eficiente para entregar trabajos</div>
+					<div class="opinion-left">Personalidad</div>
 					<div class="center-option">
 						<input type="checkbox" id="id_opinion4" name="opinion4">
 					</div>
-					<div class="opinion-right">No es puntual y nos hace quedar mal en clase.</div>
 				</div>
 				<div class="opinion group">
-					<div class="opinion-left">Es puntual y eficiente para entregar trabajos</div>
+					<div class="opinion-left">Volverias a trabajar con el/ella?</div>
 					<div class="center-option">
 						<input type="checkbox" id="id_opinion5" name="opinion5">
 					</div>
-					<div class="opinion-right">No es puntual y nos hace quedar mal en clase.</div>
 				</div>
 				<div class="opinion">
 					<textarea class="opinion-textarea" id="id_comment" name="comment" placeholder="Comentario final"></textarea>
 				</div>
 				<div class="rate-upload">
-					<input type="submit" class="rate-submit button" />
+					<input type="submit" class="rate-submit button" value="Guardar"/>
 				</div>
 			</div>
 		</form>

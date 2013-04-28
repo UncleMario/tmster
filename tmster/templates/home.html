@@ -11,7 +11,13 @@
 </script>
 {% include 'django_facebook/_facebook_js.html' %}
 		<div class="home-search" style="margin-top:5em">
-			<img src="{{ MEDIA_URL }}img/logo_brillo.png" />
+			<img src="{{ MEDIA_URL }}img/Logo_Flat-03.png" />
+
+			<form action="search" class="search-form group">
+				<input id="srch" type="text" class="search-input" placeholder="¿A quién buscas?" name="q" />
+				<input class="search-submit button" type="submit" value="Buscar" />
+			</form>
+			
 			<h1 class="home-title">
 				<span class="highlight">Entérate de como trabajan tus compañeros de clase.</span><br/><br/>
 
@@ -28,10 +34,6 @@
 
 
 			</h1>
-			<form action="search" class="search-form group">
-				<input id="srch" type="text" class="search-input" placeholder="¿A quién buscas?" name="q" />
-				<input class="search-submit button" type="submit" value="Buscar" />
-			</form>
 		</div>
 		<style>
 			.description-1 {
