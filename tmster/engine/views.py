@@ -1,7 +1,8 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.utils import simplejson
 
 from tmster.engine.forms import StudentForm, SurveyForm
 from tmster.engine.models import Survey, Opinion, Comment, Student
@@ -46,6 +47,16 @@ def survey(request, studentID):
 	return render_to_response('survey.html', 
 		{'form':form}, context_instance=RequestContext(request))
 
-
-
-
+def autocomp(request):
+	q = request.GET.get('term', '')
+	students = Student.objects.filter(name__icontains = q )[:10]
+	results = []
+	for s in students:
+		s_json = {}
+		s_json['id'] = s.id
+		s_json['label'] = s.name
+		s_json['value'] = s.name
+		results.append(s_json)
+	data = simplejson.dumps(results)
+	mimetype = 'application/json'
+	return HttpResponse(data, mimetype)

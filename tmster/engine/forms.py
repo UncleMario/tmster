@@ -51,10 +51,3 @@ class SurveyForm(forms.Form):
         required=False,
         widget = forms.Textarea()
         )
-
-
-
-
-
-
-
