@@ -3,4 +3,5 @@ venv
 *.pyo
 *~
 localsettings.py
+tmster/media/images/facebook_profiles/
 \#*

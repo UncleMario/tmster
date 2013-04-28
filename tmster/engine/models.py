@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 from django_facebook.models import FacebookProfileModel
+from django_facebook import signals
 
 SCHOOL_CHOICES = (
 	('1','ITESM Campus Monterrey'),
@@ -24,12 +25,16 @@ VARIANT_CHOICES = (
 
 class Student(models.Model):
 	name = models.CharField(max_length=40)
-	school = models.CharField(max_length=2, choices=SCHOOL_CHOICES)
+	school = models.CharField(max_length=2, blank=True, null=True, choices=SCHOOL_CHOICES)
+	carrer = models.CharField(max_length=50, blank=True, null=True)
 	facebook = models.CharField(max_length=50, blank=True, null=True)
 	twitter = models.CharField(max_length=20, blank=True, null=True)
 
 	def __unicode__(self):
 		return u'%s' % (self.name)
+
+	def get_url(self):
+		return '/student/%s' % (self.pk)
 
 
 class Profile(FacebookProfileModel):
@@ -44,8 +49,13 @@ class Profile(FacebookProfileModel):
 		if created:
 			Profile.objects.create(user=instance)
 
+	#Create new student info by user
+	#def facebook_register(sender, profile, facebook_data, **kwargs):
+	#	student = Student.objects.create(name=profile.facebook_name, facebook=profile.facebook_profile_url)
+
 	#Signal to create user profile
 	post_save.connect(create_user_profile, sender=User)
+	#signals.facebook_user_registered.connect(facebook_register, sender=User)
 
 class Opinion(models.Model):
 	variant = models.CharField(max_length=2, choices=VARIANT_CHOICES)
@@ -64,6 +74,7 @@ class Comment(models.Model):
 class Survey(models.Model):
 	user = models.ForeignKey(User)#from
 	student = models.ForeignKey(Student)#to
+	date = models.DateField(auto_now_add=True)
 	comment = models.ForeignKey(Comment)
 	opinions = models.ManyToManyField(Opinion)
 

@@ -9,6 +9,7 @@ class StudentForm(ModelForm):
         widgets = {
         'name' : TextInput(attrs={'class':''}),
         'school' : Select(attrs={'class':''}),
+        'carrer' : TextInput(attrs={'class':''}),
         'twitter' : TextInput(attrs={'class':''}),
         'facebook' : TextInput(attrs={'class':''}),
         }

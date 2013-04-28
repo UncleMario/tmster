@@ -1,0 +1,28 @@
+.rating-bar {
+	box-shadow: inset 0px -0.5em 0.5em rgba(255, 255, 255, 0.1);
+	background: #101010;
+}
+
+.rating-bar-width {
+	box-shadow: inset 0px -0.5em 0.5em rgba(0, 0, 0, 0.25);
+}
+
+.rating-bar-width.level-1 {
+	background: rgb(207, 47, 47);
+}
+
+.rating-bar-width.level-2 {
+	background: rgb(207, 117, 47);
+}
+
+.rating-bar-width.level-3 {
+	background: rgb(207, 167, 38);
+}
+
+.rating-bar-width.level-4 {
+	background: rgb(104, 160, 20);
+}
+
+.rating-bar-width.level-5 {
+	background: rgb(94, 199, 94);
+}

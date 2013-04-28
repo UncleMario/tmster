@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 from django.http import HttpResponse, HttpResponseRedirect
+=======
+import urllib
+
+from django.http import HttpResponseRedirect
+>>>>>>> e610b26e75758105ec67b1da3d56fddb19cffc03
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
@@ -77,5 +83,3 @@ def autocomp(request):
 	data = simplejson.dumps(results)
 	mimetype = 'application/json'
 	return HttpResponse(data, mimetype)
-
-
