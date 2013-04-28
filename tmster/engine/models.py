@@ -44,8 +44,15 @@ class Profile(FacebookProfileModel):
 		if created:
 			Profile.objects.create(user=instance)
 
+	#Create new student info by user
+	def create_student_by_user(sender, instance, created, **kwargs):
+		if created and instance.profile.facebook_name is not None:
+			Student.objects.create(name=instance.profile.facebook_name, facebook=instance.profile.facebook_profile_url)
+
 	#Signal to create user profile
 	post_save.connect(create_user_profile, sender=User)
+	#Signal to create new student 
+	post_save.connect(create_student_by_user, sender=User)
 
 class Opinion(models.Model):
 	variant = models.CharField(max_length=2, choices=VARIANT_CHOICES)
