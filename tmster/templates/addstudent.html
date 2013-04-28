@@ -1,9 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form action="" method="post" enctype="multipart/form-data">{% csrf_token%}
-	{{ form }}
-	{{ form.errors }}
-	<input type="submit" value="guardar">
 </form>
+		<div class="create-user" style="margin-top:5em">
+			<style>
+				input, select {
+					font-size: 1.5em;
+					margin-bottom: 0.5em;
+					padding: 0.5em;
+					border-radius: 0.25em;
+				}
+
+				select {
+					width: 102.5%;
+				}
+
+				.button {
+					display: inline-block;
+					width: 25%;
+					border-radius: 2em;
+				}
+
+				.purple.button {
+					color: white;
+					background: rgb(59, 81, 152);
+				}
+			</style>
+			<form action="" method="post" enctype="multipart/form-data">{% csrf_token%}
+				<h1 class="text-align-left" style="font-size: 3em; margin-bottom:1em">Agregar Alumno</h1>
+				<p style="font-size:1.5em; text-align: left; margin-bottom:1em">Para crear alumno, por favor introduce los campos correspondientes aquí abajo.</p>
+				{{ form.name }}
+				{{ form.name.errors }}
+				<p style="font-size:1.5em; text-align: left; margin-bottom:1em">Universidad</p>
+				{{ form.school }}
+				{{ form.school.errors }}
+
+				{{ form.carrer }}
+				{{ form.carrer.errors }}
+				<br/><br/>
+				{{ form.facebook }}
+				{{ form.facebook.errors }}
+
+				{{ form.twitter }}
+				{{ form.twitter.errors }}
+				<br/>
+				<input class="purple button" type="Submit" value="Crear"/>
+			</form>
+		</div>
 {% endblock %}

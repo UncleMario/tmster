@@ -9,10 +9,10 @@ from django_facebook.models import FacebookProfileModel
 from django_facebook import signals
 
 SCHOOL_CHOICES = (
-	('1','ITESM Campus Monterrey'),
-	('2','UDEM'),
-	('3','UANL'),
-	('4','UR'),
+	('ITESM Campus Monterrey','ITESM Campus Monterrey'),
+	('UDEM','UDEM'),
+	('UANL','UANL'),
+	('UR','UR'),
 	)
 
 VARIANT_CHOICES = (
@@ -25,10 +25,14 @@ VARIANT_CHOICES = (
 
 class Student(models.Model):
 	name = models.CharField(max_length=40)
-	school = models.CharField(max_length=2, blank=True, null=True, choices=SCHOOL_CHOICES)
+	school = models.CharField(max_length=50, blank=True, null=True, choices=SCHOOL_CHOICES)
 	carrer = models.CharField(max_length=50, blank=True, null=True)
 	facebook = models.CharField(max_length=50, blank=True, null=True)
 	twitter = models.CharField(max_length=20, blank=True, null=True)
+	#aditional fields
+	calification = models.IntegerField(default=1)
+	points = models.IntegerField(default=0)
+	total_surveys = models.IntegerField(default=0)
 
 	def __unicode__(self):
 		return u'%s' % (self.name)
@@ -80,6 +84,13 @@ class Survey(models.Model):
 
 	def __unicode__(self):
 		return u'%s' % (self.user)
+
+	def get_grade(self):
+		grade = 0
+		for opinion in self.opinions.all():
+			if opinion.value:
+				grade += 1
+		return grade
 
 	def get_opinion1(self):
 		return self.opinions.all()[0].value

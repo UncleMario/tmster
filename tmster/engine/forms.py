@@ -6,12 +6,13 @@ from tmster.engine.models import Student, Opinion, Comment
 class StudentForm(ModelForm):
     class Meta:
         model = Student
+        exclude = ('calification','points','total_surveys')
         widgets = {
-        'name' : TextInput(attrs={'class':''}),
+        'name' : TextInput(attrs={'placeholder':'Nombre'}),
         'school' : Select(attrs={'class':''}),
-        'carrer' : TextInput(attrs={'class':''}),
-        'twitter' : TextInput(attrs={'class':''}),
-        'facebook' : TextInput(attrs={'class':''}),
+        'carrer' : TextInput(attrs={'placeholder':'Carrera'}),
+        'facebook' : TextInput(attrs={'placeholder':'Facebook'}),
+        'twitter' : TextInput(attrs={'placeholder':'Twitter'}),
         }
 
 class OpinionForm(forms.Form):
