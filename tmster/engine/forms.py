@@ -6,6 +6,7 @@ from tmster.engine.models import Student, Opinion, Comment
 class StudentForm(ModelForm):
     class Meta:
         model = Student
+        exclude = ('calification','points','total_surveys')
         widgets = {
         'name' : TextInput(attrs={'placeholder':'Nombre'}),
         'school' : Select(attrs={'class':''}),

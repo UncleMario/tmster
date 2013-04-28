@@ -40,6 +40,8 @@ def student(request):
 
 @login_required(login_url='/login/')
 def survey(request, studentID):
+	from tmster.engine.functions import update_calification
+
 	student = get_object_or_404(Student, pk=studentID)
 	if request.method == 'POST':
 		form = SurveyForm(request.POST)
@@ -59,7 +61,11 @@ def survey(request, studentID):
 
 			#Save survey
 			survey.save()
-			return HttpResponseRedirect('/')
+
+			#update user calification
+			update_calification(survey.student, survey.get_grade())
+
+			return HttpResponseRedirect('/student/%s' % (survey.student.pk))
 	else:
 		form = SurveyForm()
 	return render_to_response('survey.html', 

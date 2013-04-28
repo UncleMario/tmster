@@ -29,6 +29,10 @@ class Student(models.Model):
 	carrer = models.CharField(max_length=50, blank=True, null=True)
 	facebook = models.CharField(max_length=50, blank=True, null=True)
 	twitter = models.CharField(max_length=20, blank=True, null=True)
+	#aditional fields
+	calification = models.IntegerField(default=1)
+	points = models.IntegerField(default=0)
+	total_surveys = models.IntegerField(default=0)
 
 	def __unicode__(self):
 		return u'%s' % (self.name)
@@ -80,5 +84,13 @@ class Survey(models.Model):
 
 	def __unicode__(self):
 		return u'%s' % (self.user)
+
+	def get_grade(self):
+		grade = 0
+		for opinion in self.opinions.all():
+			if opinion.value:
+				grade += 1
+		return grade
+
 
 
