@@ -8,6 +8,9 @@
 </script>
 <div class="header group">
 	<a href="/" ><img class="header-logo" src="{{ MEDIA_URL }}img/Logo_Azul.png" /></a>
+	{% if user.is_authenticated %}
+	<br />Hola, {{ user }} (<a href="/logout">Salir</a>)
+	{% endif %}
 	<form action="/search" class="search-form header-search-form group">
 		<input id="srch" class="search-input" placeholder="¿A quién buscas?" name="q" />
 		<input class="search-submit button" type="submit" value="Buscar" />
