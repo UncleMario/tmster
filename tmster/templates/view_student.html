@@ -25,6 +25,9 @@
 
 		<div class="rate" style="display:none">
 			{% if user.is_authenticated %}
+			<div style="text-align: left;margin:10px" class="student-header-info-name">
+			Califica a tu compañero
+			</div>
 			<form action="/survey/add/{{ student.pk }}/" method="post" enctype="multipart/form-data">{% csrf_token%}
 				<div class="opinion group">
 					<div class="opinion-left">Puntualidad</div>
@@ -78,9 +81,9 @@
 		</div>
 		
 
-		<h1 style="text-align: left; font-size: 1.5em">
+		<div style="text-align: left;margin:10px" class="student-header-info-name">
 			Calificaciones
-		</h1>
+		</div>
 		<!--Puntualidad Desempeño Accesibilidad Personalidad Trabajarías de nuevo con el/ella?!-->
 		<div class="rates-area">
 			{% for grade in grades %}
