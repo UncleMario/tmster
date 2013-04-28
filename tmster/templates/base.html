@@ -14,7 +14,10 @@
 		<![endif]-->
 	</head>
 	<body class="text-shadow">
-		{% include "topbar.html" %}
+		<div>
+			{{ user}}
+			<a href="/logout/">Cerrar sesion</a>
+		</div>
 		{% block content %}
 		{% endblock %}
 
