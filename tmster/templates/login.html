@@ -11,7 +11,7 @@
 				<a href="javascript:void(0);" class="blue button" style="font-size: 0.8em;padding: 0.5em 0.75em;border-radius: 0.25em;" onclick="F.connect(this.parentNode);">
 					<span style="font-size:1.25em;padding-left:0.5em;padding-right:0.75em">f</span>Iniciar sesión
 				</a>
-				<input type="hidden" value="{{ request.path }}" name="next" />
+				<input type="hidden" name="next" value="{{ next|escape }}" />
 				{% csrf_token %} 
 				</form>
 			</h1>

@@ -3,6 +3,8 @@
 {% block content %}
 
 {% include "header.html" %}
+{% include 'django_facebook/_facebook_js.html' %}
+
 		<div class="student-header">
 			<div class="student-header-info">
 				<div class="student-header-info-name">{{ student.name }}</div>
@@ -21,8 +23,9 @@
 			</div>
 		</div>
 
-		<form action="/survey/add/{{ student.pk }}/" method="post" enctype="multipart/form-data">{% csrf_token%}
-			<div class="rate" style="display:none">
+		<div class="rate" style="display:none">
+			{% if user.is_authenticated %}
+			<form action="/survey/add/{{ student.pk }}/" method="post" enctype="multipart/form-data">{% csrf_token%}
 				<div class="opinion group">
 					<div class="opinion-left">Puntualidad</div>
 					<div class="center-option">
@@ -59,8 +62,21 @@
 				<div class="rate-upload">
 					<input type="submit" class="rate-submit button" value="Guardar"/>
 				</div>
-			</div>
-		</form>
+			</form>
+			{% else %}
+			<h1 class="home-title">
+				<span class="highlight">Debes iniciar sesión para poder opinar</span><br/><br/>
+				<form action="{% url facebook_connect %}?facebook_login=1" method="post">
+				<a href="javascript:void(0);" class="blue button" style="font-size: 0.8em;padding: 0.5em 0.75em;border-radius: 0.25em;" onclick="F.connect(this.parentNode);">
+					<span style="font-size:1.25em;padding-left:0.5em;padding-right:0.75em">f</span>Iniciar sesión
+				</a>
+				<input type="hidden" name="next" value="{{ next|escape }}" />
+				{% csrf_token %} 
+				</form>
+			</h1>
+			{% endif %}
+		</div>
+		
 
 		<h1 style="text-align: left; font-size: 1.5em">
 			Calificaciones
