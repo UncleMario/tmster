@@ -1,7 +1,15 @@
-		<div class="header group">
-			<img class="header-logo" src="{{ MEDIA_URL }}img/logo.png" />
-			<form class="search-form header-search-form group">
-				<input class="search-input" placeholder="¿A quién buscas?" />
-				<input class="search-submit button" type="submit" value="Buscar" />
-			</form>
-		</div>
+<script type="text/javascript">
+	$(function() {
+ 		$("#srch").autocomplete({
+			source: "/search/autocomplete/",
+			minLength: 2,
+		});
+	});
+</script>
+<div class="header group">
+	<a href="/" ><img class="header-logo" src="{{ MEDIA_URL }}img/logo.png" /></a>
+	<form action="/search" class="search-form header-search-form group">
+		<input id="srch" class="search-input" placeholder="¿A quién buscas?" name="q" />
+		<input class="search-submit button" type="submit" value="Buscar" />
+	</form>
+</div>

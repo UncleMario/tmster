@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<script type="text/javascript">
+	$(function() {
+ 		$("#srch").autocomplete({
+			source: "/search/autocomplete/",
+			minLength: 2,
+		});
+	});
+</script>
 {% include 'django_facebook/_facebook_js.html' %}
 		<div class="home-search" style="margin-top:5em">
 			<img src="{{ MEDIA_URL }}img/logo.png" />
@@ -18,7 +25,7 @@
 				</form>
 			</h1>
 			<form action="search" class="search-form group">
-				<input type="text" class="search-input" placeholder="¿A quién buscas?" name="q" />
+				<input id="srch" type="text" class="search-input" placeholder="¿A quién buscas?" name="q" />
 				<input class="search-submit button" type="submit" value="Buscar" />
 			</form>
 		</div>

@@ -20,13 +20,9 @@ urlpatterns = patterns('django.views.generic.simple',
 	#url(r'^student/(?P<studentID>\d+)/(?P<student_name>[a-zA-Z0-9_+-]+)/$', view_student, name='view student'),
 	url(r'^student/(?P<studentID>\d+)/$', view_student, name='view student'),
 
-
 	url(r'^search/$', search, name='search service'),
-
-
-
+	url(r'^search/autocomplete/$',autocomp, name ="autocomp"),
 
 	url(r'^survey/add/(?P<studentID>\d+)/$',survey, name ="add student"),
-	url(r'^search/autocomplete/$',autocomp, name ="autocomp"),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
