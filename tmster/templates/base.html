@@ -1,12 +1,17 @@
 <!doctype html>
-<html lang="es-mx">
+<html>
 	<head>
-		<title></title>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<title>{% block title %}{% endblock %}</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/style.css" />
+		<!--[if lt IE 8]>
+			<link rel="stylesheet" type="text/css" href="ie.css" />
+		<![endif]-->
 	</head>
-	<body>
+	<body class="text-shadow">
 		{% block content %}
-
 		{% endblock %}
+		{% include "footer.html" %}
 	</body>
 </html>

@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 from django_facebook.models import FacebookProfileModel
+from django_facebook import signals
 
 SCHOOL_CHOICES = (
 	('1','ITESM Campus Monterrey'),
@@ -45,14 +46,12 @@ class Profile(FacebookProfileModel):
 			Profile.objects.create(user=instance)
 
 	#Create new student info by user
-	def create_student_by_user(sender, instance, created, **kwargs):
-		if created and instance.profile.facebook_name is not None:
-			Student.objects.create(name=instance.profile.facebook_name, facebook=instance.profile.facebook_profile_url)
+	#def facebook_register(sender, profile, facebook_data, **kwargs):
+	#	student = Student.objects.create(name=profile.facebook_name, facebook=profile.facebook_profile_url)
 
 	#Signal to create user profile
 	post_save.connect(create_user_profile, sender=User)
-	#Signal to create new student 
-	post_save.connect(create_student_by_user, sender=User)
+	#signals.facebook_user_registered.connect(facebook_register, sender=User)
 
 class Opinion(models.Model):
 	variant = models.CharField(max_length=2, choices=VARIANT_CHOICES)

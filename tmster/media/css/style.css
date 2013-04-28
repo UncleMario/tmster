@@ -1,0 +1,292 @@
+/* ******* START: IMPORTS ******* */
+
+@import url('/media/css/reset.css');
+@import url('/media/css/form.css');
+@import url('/media/css/3d.css');
+/* @import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,100,300,100italic,300italic,400italic"); */
+
+/* *******  END: IMPORTS  ******* */
+
+/* ******* START: BASIC STYLING ******* */
+/* TEXT ALIGN */
+.text-align-center {
+	text-align: center;
+}
+
+.text-align-left {
+	text-align: left;
+}
+
+.text-align-right {
+	text-align: right;
+}
+
+.text-align-justify {
+	text-align: justify;
+}
+
+/* DISPLAY */
+.display-inline {
+	display: inline;
+}
+
+/* FLOATING */
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* ******* END: BASIC STYLING ******* */
+
+/* COMMON STYLING */
+.text-shadow {
+	text-shadow: 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.25);
+}
+
+.highlight {
+	background: black;
+	background: rgba(0, 0, 0, 0.5);
+	line-height: 1.75em;
+	padding: 0.15em 0.25em;
+}
+
+/* ******* START: WEBPAGE STYLING ******* */
+html {
+	text-align: center;
+	background: #3D6F92;
+	background: url(/media/img/cover.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+body {
+	font-family: sans-serif;
+	font-size: 14px;
+	font-weight: 200;
+	
+	color: white;
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+/* Header */
+.header {
+	height: 5em;
+	position: relative;
+}
+
+.header-logo {
+	height: 3em !important;
+	
+	position: absolute;
+	left: 0px;
+	top: 50%;
+	margin-top: -1.5em;
+}
+
+.header-search-form {
+	position: absolute;
+	right: 0px;
+	top: 50%;
+	margin-top: -17px;
+}
+
+/* Footer */
+.footer {
+	margin: 2em 0px;
+}
+
+/* Home */
+.home-title {
+	max-width: 80%;
+	margin: 1em auto;
+
+	font-size: 3em;
+}
+
+/* Search */
+.search-no-results, .search-results {
+	margin: 1em 0px;
+}
+
+.search-no-results-title {
+	font-size: 1.5em;
+	padding: 0.5em 0px;
+
+	background: rgba(216, 201, 31, 0.5);
+}
+
+/* Search results */
+.search-results-information {
+	margin: 1em 0px;
+	padding: 1em 0px;
+	text-align: left;
+}
+
+/* Search results */
+.search-result {
+	position: relative;
+	border-bottom: 1px solid white;
+	padding: 0.5em 0px;
+}
+
+.search-result-info {
+	width: 70%;
+}
+
+.search-result-info-name, .search-result-info-school, .search-result-info-career {
+	float: left;
+}
+
+.search-result-info-name {
+	width: 50%;
+}
+
+.search-result-info-school {
+	width: 25%;
+	font-style: italic;
+}
+
+.search-result-info-career {
+	width: 25%;
+}
+
+.search-result-rating {
+	width: 20%;
+	position: absolute;
+	right: 1em;
+	top: 50%;
+	margin-top: -0.5em;
+}
+
+/* Rating */
+.rating-bar {
+	border-radius: 1em;
+	height: 1em;
+	position: relative;
+	border: 1px solid white;
+
+	overflow: hidden;
+}
+
+.rating-bar-width {
+	width: 100%	;
+	background: white;
+}
+
+.rating-bar-width.level-1 {
+	width: 20%;
+}
+
+.rating-bar-width.level-2 {
+	width: 40%;
+}
+
+.rating-bar-width.level-3 {
+	width: 60%;
+}
+
+.rating-bar-width.level-4 {
+	width: 80%;
+}
+
+.rating-bar-width.level-5 {
+	width: 100%;
+}
+
+/* Student profile */
+.student-header {
+	margin: 1em 0px;
+	padding: 1em;
+	position: relative;
+	text-align: left;
+
+	background: rgba(0, 0, 0, 0.75);
+	border-radius: 0.5em;
+}
+
+.student-header-info {
+	width: 70%;
+}
+
+.student-header-info-name {
+	font-size: 2em;
+}
+
+/* Rate area */
+.rate {
+	margin: 1.5em 0px;
+	padding: 1em;
+	background: gray;
+	background: rgba(0, 0, 0, 0.75);
+
+	border-radius: 0.5em;
+}
+
+.opinion, .rate-upload {
+	padding: 1em 0px;
+}
+
+.opinion-left, .center-option, .opinion-right {
+	float: left;
+}
+.opinion-left, .opinion-right {
+	width: 40%;
+}
+
+.center-option {
+	width: 20%;
+}
+
+.rate-upload {
+	text-align: center;
+}
+
+.rate-submit {
+	display: inline-block;
+	padding: 0.25em 0px;
+	width: 25%;
+	border-radius: 1em;
+}
+
+.opinion-textarea {
+	display: inline-block;
+	width: 80%;
+}
+
+/* Rate area */
+.user-rate {
+	background: rgba(0, 0, 0, 0.75);
+	border-radius: 0.5em;
+	margin-bottom: 1em;
+}
+
+.date, .user-comment, .opinion-table {
+	float: left;
+	padding: 0.5em 0px;
+}
+
+.date, .opinion-table {
+	width: 10%;
+}
+
+.user-comment {
+	width: 40%;
+	text-align: left;
+}
+
+.triangle {
+	font-size: 1.5em;
+}
